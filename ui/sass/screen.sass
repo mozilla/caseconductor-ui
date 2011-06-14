@@ -66,6 +66,10 @@
 .drilldown.details
   // @@@ hidden for .3 release
   display: none
+  .section-runtests &
+    display: block
+
+.drilldown.details
   +clearfix
   +padding-leader(.25)
   +padding-trailer(.25)
@@ -95,6 +99,11 @@
     +full
     +padding-leader
     +padding-trailer
+
+  h3
+    @extend .allcaps
+    +font-weight-normal
+    margin: 0
 
 // Content --------------------------------------------------------------------
 
