@@ -7,7 +7,12 @@ from . import errors
 
 
 class RemoteObjectForm(forms.Form):
-    pass
+    def __init__(self, *args, **kwargs):
+        super(RemoteObjectForm, self).__init__(*args, **kwargs)
+
+        for field in self.fields.values():
+            if isinstance(field, forms.DateField):
+                field.widget.attrs.setdefault("placeholder", "mm/dd/yyyy")
 
 
 
@@ -63,7 +68,7 @@ class AddEditForm(RemoteObjectForm):
                 initial[fname] = getattr(
                     self.instance, self.form_to_model(fname))
 
-        super(RemoteObjectForm, self).__init__(*args, **kwargs)
+        super(AddEditForm, self).__init__(*args, **kwargs)
 
         if self.instance is not None:
             for fname in self.no_edit_fields:
