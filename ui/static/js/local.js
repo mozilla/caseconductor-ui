@@ -168,6 +168,22 @@ var TCM = TCM || {};
             updateFormActions();
         });
 
+        keywordGroups.find('input[type="checkbox"]:not(:checked) + label').live('click', function (event) {
+            var thisGroup = $(this).closest('.filter-group.keyword'),
+                thisFilterName = $(this).html();
+            if (thisGroup.find('input[type="checkbox"]:checked').length) {
+                if (thisGroup.find('input[type="checkbox"][value^="^"][value$="$"]:checked').length === thisGroup.find('input[type="checkbox"]:checked').length
+                        && thisFilterName.indexOf('^') === 0
+                        && thisFilterName.lastIndexOf('$') === thisFilterName.length - 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        });
+
         textbox.keyup(function(event) {
             // Updates suggestion-list if typed-text has changed
             if ($(this).val() !== typedText && $(this).val() !== placeholder) {
