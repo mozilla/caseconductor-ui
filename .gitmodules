@@ -4,3 +4,6 @@
 [submodule "requirements/vendor"]
 	path = requirements/vendor
 	url = git://github.com/mozilla/caseconductor-vendor-lib.git
+[submodule "styleguide/vendor/kss"]
+	path = styleguide/vendor/kss
+	url = git://github.com/heikki/kss.git
