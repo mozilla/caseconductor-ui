@@ -95,7 +95,7 @@ class Command(BaseCommand):
                     "description": case.description
                     }
 
-
+                resp_case["created_by"] = case.timeline.createdBy.email
                 # build the tags for this case
                 resp_case["tags"] = [x.name for x in case.tags]
 
